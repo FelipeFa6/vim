@@ -1,7 +1,4 @@
 " vimrc
-colorscheme jcs
-syntax on
-
 set expandtab
 set nu
 set shiftwidth=4
@@ -17,7 +14,11 @@ map <C-t> :tabnew ./<CR>
 map <S-h> :tabprevious <CR>
 map <S-l> :tabnext <CR>
 
-map <C-f> :Files <CR>
+map <C-f> :GF<CR>
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 call plug#begin()
     Plug 'junegunn/fzf.vim'
@@ -30,3 +31,6 @@ call plug#begin()
 call plug#end()
 
 source $HOME/.vim/lsp.vim
+
+colorscheme jcs
+syntax off
