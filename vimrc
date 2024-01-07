@@ -1,4 +1,7 @@
 " vimrc
+set viminfo=
+let g:netrw_dirhistmax = 0
+
 set expandtab
 set nu
 set shiftwidth=4
