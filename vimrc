@@ -3,20 +3,20 @@
 "
 
 " defaults for everything
-set nu nuw=8
-set backspace=indent,eol,start
+
 let c_minlines=500
+set backspace=indent,eol,start
 set encoding=utf-8
 set fillchars+=vert:│
 set hidden
+set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
 set modelines=5
-set nocompatible
 set nofoldenable
-set hlsearch
 set nostartofline
+set number nuw=8
 set ruler
 set scrolloff=10
 set shiftwidth=4
@@ -31,6 +31,7 @@ set spelllang=en_us
 set tabstop=4
 set timeoutlen=0
 set wildmode=longest,list,full
+
 
 " don't pollute directories with swap files, keep them in one place
 silent !mkdir -p ~/.vim/{backup,swp}/

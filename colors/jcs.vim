@@ -9,7 +9,7 @@ endif
 
 let colors_name = "jcs"
 
-hi Comment		cterm=NONE		ctermfg=242
+hi Comment		cterm=NONE		ctermfg=243
 hi Constant		cterm=underline		ctermfg=NONE
 hi CursorLineNr		cterm=bold		ctermfg=244
 hi DiffAdd		cterm=bold		ctermfg=NONE
@@ -29,7 +29,7 @@ hi MatchParen		cterm=bold		ctermfg=none	ctermbg=185
 hi ModeMsg		cterm=bold		ctermfg=NONE
 hi MoreMsg		cterm=bold		ctermfg=NONE
 hi NonText		cterm=bold		ctermfg=NONE
-hi PreProc		cterm=underline		ctermfg=NONE
+hi PreProc		cterm=NONE		ctermfg=NONE
 hi Pmenu		cterm=NONE		ctermfg=NONE	ctermbg=253
 hi PmenuSel		cterm=bold		ctermfg=NONE	ctermbg=253
 hi Question		cterm=standout		ctermfg=NONE
@@ -40,11 +40,11 @@ hi SpellLocal		cterm=NONE		ctermfg=NONE	ctermbg=223
 hi Special		cterm=bold		ctermfg=NONE
 hi SpecialKey		cterm=bold		ctermfg=NONE
 hi Statement		cterm=bold		ctermfg=NONE
-hi StatusLine		cterm=bold,reverse	ctermfg=NONE
-hi StatusLineNC		cterm=reverse		ctermfg=NONE
+hi StatusLine		cterm=reverse		ctermfg=NONE
+hi StatusLineNC		cterm=bold,reverse	ctermfg=NONE
 hi TabLine		cterm=reverse		ctermfg=NONE	ctermbg=NONE
 hi Title		cterm=bold		ctermfg=NONE
-hi Todo			cterm=bold,standout	ctermfg=185	ctermbg=0
+hi Todo			cterm=bold		ctermfg=NONE	ctermbg=0
 hi Type			cterm=bold		ctermfg=NONE
 hi Underlined		cterm=NONE		ctermfg=NONE
 hi VertSplit		cterm=reverse		ctermfg=NONE
