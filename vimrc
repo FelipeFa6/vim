@@ -3,6 +3,7 @@
 "
 
 " defaults for everything
+set nu nuw=8
 set backspace=indent,eol,start
 let c_minlines=500
 set encoding=utf-8
@@ -14,7 +15,7 @@ set laststatus=2
 set modelines=5
 set nocompatible
 set nofoldenable
-set nohlsearch
+set hlsearch
 set nostartofline
 set ruler
 set scrolloff=10
@@ -45,6 +46,7 @@ colorscheme jcs
 au BufWinEnter * match ExtraWhitespace /\(\s\+$\|\^\s*     \+\)/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\(\s\+$\|\^\s*     \+\)/
+
 " performance hack
 if version >= 702
 	au BufWinLeave * call clearmatches()
@@ -80,7 +82,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 " just highlight the line with the error, i don't need a column
-set signcolumn=no
+set signcolumn=number
 
 " default to no color column
 au FileType * setlocal colorcolumn=0
@@ -98,7 +100,20 @@ let g:buftabline_show=1
 set viminfo=
 let g:netrw_dirhistmax = 0
 
+" cursor
+" insert mode = '|'
+" normal mode = '█'
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" trailing spaces
+set list
+set listchars=tab:>·,trail:·
+
 " lsp configuration typying autocompletion
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_diagnostics_float_cursor = 1
+
 filetype plugin on
 
 function! s:on_lsp_buffer_enabled() abort
