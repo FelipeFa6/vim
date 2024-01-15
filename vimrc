@@ -2,8 +2,6 @@
 " felipe farias <felipe.farias.e1@gmail.com>
 "
 
-" defaults for everything
-
 let c_minlines=500
 set backspace=indent,eol,start
 set encoding=utf-8
@@ -12,41 +10,36 @@ set hidden
 set hlsearch
 set ignorecase
 set incsearch
-set laststatus=2
+set laststatus=1
 set modelines=5
 set nofoldenable
 set nostartofline
-set number nuw=8
 set ruler
 set scrolloff=10
-set shiftwidth=4
 set showcmd
 set showmatch
 set showmode
 set smartcase
 set smarttab
-set spellcapcheck=
-set spellfile=~/.vimspell.add
 set spelllang=en_us
-set tabstop=4
-set timeoutlen=0
 set wildmode=longest,list,full
 
+" indentation
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+" minor color config
+set t_Co=256
+colorscheme jcs
+syntax off
+set background=dark
 
 " don't pollute directories with swap files, keep them in one place
 silent !mkdir -p ~/.vim/{backup,swp}/
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
-
-" minor color config
-set t_Co=256
-syntax on
-colorscheme jcs
-
-" highlight stray spaces and tabs when out of insert mode
-au BufWinEnter * match ExtraWhitespace /\(\s\+$\|\^\s*     \+\)/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\(\s\+$\|\^\s*     \+\)/
 
 " performance hack
 if version >= 702
@@ -55,11 +48,14 @@ endif
 
 " pluggins
 call plug#begin()
-Plug 'junegunn/fzf.vim'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
+	Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/vim-easy-align'
+	Plug 'mattn/vim-lsp-settings'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " exit
@@ -82,14 +78,18 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
+" easyalign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " just highlight the line with the error, i don't need a column
-set signcolumn=number
+set signcolumn=no
 
 " default to no color column
 au FileType * setlocal colorcolumn=0
 
 " all source code gets wrapped at <80 and auto-indented
-au FileType arduino,asm,c,cpp,go,java,javascript,php,html,make,objc,perl setlocal tw=79 autoindent colorcolumn=81
+au FileType arduino,asm,c,cpp,go,java,javascript,php,html,make,objc,perl setlocal tw=79 autoindent
 
 " email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
 au FileType cvs,gitcommit,mail setlocal tw=68 et spell colorcolumn=69
@@ -101,15 +101,20 @@ let g:buftabline_show=1
 set viminfo=
 let g:netrw_dirhistmax = 0
 
-" cursor
-" insert mode = '|'
-" normal mode = '█'
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+" cursor (added characters because of st)
+function! SetCursorShape()
+    let &t_EI = "\e[2 q"
+    let &t_SI = "\e[6 q"
+    call echoraw(&t_EI)
+endfunction
+
+autocmd VimEnter * call SetCursorShape()
+autocmd CmdlineLeave * call echoraw(&t_EI)
+autocmd CmdlineEnter * call echoraw(&t_SI)
 
 " trailing spaces
-set list
-set listchars=tab:>·,trail:·
+"set list
+"set listchars=tab:>·,trail:·
 
 " lsp configuration typying autocompletion
 let g:lsp_diagnostics_virtual_text_enabled = 0
