@@ -1,14 +1,21 @@
+" init.vim
+
+let g:zenesque_colors=0
+colorscheme zenesque
 
 source ~/.config/nvim/config/declutter.vim
 source ~/.config/nvim/config/remap.vim
 source ~/.config/nvim/config/set.vim
-source ~/.config/nvim/config/plugin.vim
+source ~/.config/nvim/config/vim-plug.vim
 
 call plug#begin()
-Plug 'tpope/vim-sensible'
 Plug 'ThePrimeagen/harpoon'
+Plug 'junegunn/vim-easy-align'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 call plug#end()
 
 " Harpoon
