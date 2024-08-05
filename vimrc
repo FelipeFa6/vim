@@ -3,10 +3,10 @@
 let g:zenesque_colors=0
 colorscheme zenesque
 
-source ~/.config/nvim/config/declutter.vim
-source ~/.config/nvim/config/remap.vim
-source ~/.config/nvim/config/set.vim
-source ~/.config/nvim/config/vim-plug.vim
+source ~/.config/vim/config/declutter.vim
+source ~/.config/vim/config/remap.vim
+source ~/.config/vim/config/set.vim
+source ~/.config/vim/config/vim-plug.vim
 
 call plug#begin()
 Plug 'ThePrimeagen/harpoon'
