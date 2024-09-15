@@ -1,35 +1,48 @@
-" init.vim
+syntax on
+set wildmenu
+set backspace=indent,eol,start
+set nowrap
 
-let g:zenesque_colors=0
-colorscheme zenesque
+set signcolumn=no
+set guicursor=
+set termguicolors
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set hlsearch
+set incsearch
+set nobackup
+set noswapfile
+let &undodir = expand("$HOME") . "/.vim/undodir"
+set undofile
+set updatetime=50
+set mouse=
+let g:netrw_banner = 0
+set scrolloff=8
 
-source ~/.config/vim/config/declutter.vim
-source ~/.config/vim/config/remap.vim
-source ~/.config/vim/config/set.vim
-source ~/.config/vim/config/vim-plug.vim
 
-call plug#begin()
-Plug 'ThePrimeagen/harpoon'
-Plug 'junegunn/vim-easy-align'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
-call plug#end()
+let mapleader = " "
+nnoremap <Leader>pv :Ex<CR>
+nnoremap <Leader>h :nohl<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+xnoremap <Leader>p "_dP
+nnoremap <Leader>y "+y
+vnoremap <Leader>y "+y
+nnoremap <Leader>Y "+Y
+nnoremap Q <nop>
 
-" Harpoon
-nnoremap <silent> <leader>a :lua require("harpoon.mark").add_file()<CR>
-nnoremap <silent> <C-h> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-" quick cyclying
-for i in range(1, 5)
-    execute 'nnoremap <silent> <leader>' . i . ' :lua require("harpoon.ui").nav_file(' . i . ')<CR>'
-endfor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+nnoremap <Leader>x :!chmod +x %<CR>
+nnoremap <Leader>w :!./%<CR>
 
-" Telescope mapings
-nnoremap <silent> <leader>pf <cmd>Telescope find_files<CR>
-nnoremap <silent> <C-p> <cmd>Telescope git_files<CR>
-nnoremap <silent> <leader>pws <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand("<cword>") })<CR>
-nnoremap <silent> <leader>pWs <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand("<cWORD>") })<CR>
-nnoremap <silent> <leader>ps <cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })<CR>
-nnoremap <silent> <leader>vh <cmd>Telescope help_tags<CR>
+colorscheme default
+set background=dark
+set notgc
