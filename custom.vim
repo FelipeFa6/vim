@@ -1,6 +1,7 @@
 " custom.vim
 
 set wildmenu
+set wildmenu wildoptions=pum
 set backspace=indent,eol,start
 set nowrap
 
@@ -25,3 +26,6 @@ set updatetime=50
 set mouse=
 let g:netrw_banner = 0
 set scrolloff=8
+
+set laststatus=0
+

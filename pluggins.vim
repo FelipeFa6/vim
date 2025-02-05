@@ -5,16 +5,23 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/vim-easy-align'
     Plug 'mbbill/undotree'
+    Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sensible'
+    Plug 'pacha/vem-tabline'
+
+    Plug 'zekzekus/menguless'
+    Plug 'pbrisbin/vim-colors-off'
 
 call plug#end()
 
-    " fzf
-    nnoremap <C-p> :FZF <CR>
-    nnoremap <Leader>pf :GFiles<CR>
-    nnoremap <Leader>ps :RG<CR>
-    imap <C-x><C-f> <plug>(fzf-complete-path)
+" fzf
+nnoremap <C-p> :FZF <CR>
+nnoremap <C-b> :Buffers <CR>
+nnoremap <Leader>c :Colors <CR>
+nnoremap <Leader>pf :GFiles<CR>
+nnoremap <Leader>ps :RG<CR>
+imap <C-x><C-f> <plug>(fzf-complete-path)
 imap <C-x><C-l> <plug>(fzf-complete-line)
 
 " easyalign
@@ -32,3 +39,8 @@ if has("persistent_undo")
     let &undodir=target_path
     set undofile
 endif
+
+" tabline
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+set hidden
