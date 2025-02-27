@@ -27,5 +27,6 @@ set mouse=
 let g:netrw_banner = 0
 set scrolloff=8
 
-set laststatus=0
+set laststatus=2
 
+set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→

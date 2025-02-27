@@ -1,17 +1,19 @@
 " pluggins.vim
 
 call plug#begin()
-
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/vim-easy-align'
     Plug 'mbbill/undotree'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sensible'
-    Plug 'pacha/vem-tabline'
 
-    Plug 'zekzekus/menguless'
-    Plug 'pbrisbin/vim-colors-off'
+    Plug 'mkitt/tabline.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'ntpeters/vim-better-whitespace'
+
+    Plug 'nordtheme/vim'
+    Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -40,7 +42,13 @@ if has("persistent_undo")
     set undofile
 endif
 
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
 " tabline
-nnoremap [b :bprevious<CR>
-nnoremap ]b :bnext<CR>
-set hidden
+let g:tablineclosebutton=1
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE

@@ -21,3 +21,13 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 nnoremap <Leader>x :!chmod +x %<CR>
 nnoremap <Leader>w :!./%<CR>
 
+" buffers
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+set hidden
+
+" tabs
+" nnoremap <C-t> :tabnew ./<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap [t :tabprevious<CR>
+nnoremap ]t :tabnext<CR>
